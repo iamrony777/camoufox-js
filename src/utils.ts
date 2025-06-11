@@ -2,22 +2,22 @@
 // from screeninfo import get_monitors
 // from ua_parser import user_agent_parser
 
-import path from 'path';
-import { DefaultAddons, addDefaultAddons, confirmPaths } from './addons.js';
+import path from 'node:path';
+import { type DefaultAddons, addDefaultAddons, confirmPaths } from './addons.js';
 import { InvalidOS, InvalidPropertyType, NonFirefoxFingerprint, UnknownProperty } from './exceptions.js';
 import { fromBrowserforge, generateFingerprint, SUPPORTED_OS } from './fingerprints.js';
 import { publicIP, validIPv4, validIPv6 } from './ip.js';
 import { geoipAllowed, getGeolocation, handleLocales } from './locale.js';
 import { OS_NAME, getPath, installedVerStr, launchPath } from './pkgman.js';
-import { VirtualDisplay } from './virtdisplay.js';
+import type { VirtualDisplay } from './virtdisplay.js';
 import { LeakWarning } from './warnings.js';
 import { sampleWebGL } from './webgl/sample.js';
-import { PathLike, readFileSync } from 'fs';
-import { join } from 'path';
+import { type PathLike, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { UAParser } from 'ua-parser-js';
-import { Fingerprint, FingerprintGeneratorOptions } from 'fingerprint-generator';
+import type { Fingerprint, FingerprintGeneratorOptions } from 'fingerprint-generator';
 
-import { LaunchOptions as PlaywrightLaunchOptions } from 'playwright-core';
+import type { LaunchOptions as PlaywrightLaunchOptions } from 'playwright-core';
 
 type Screen = FingerprintGeneratorOptions['screen'];
 

@@ -46,11 +46,13 @@ describe('Fingerprint consistency', () => {
             expect(httpAgent).toEqual(jsAgent);
             expect(httpAgent).toMatch(userAgentRegex);
 
-            TEST_CASES.forEach(({ os: testOs, userAgentRegex }) => {
+            
+            for (const testCase of TEST_CASES) {
+                const { os: testOs, userAgentRegex } = testCase;
                 if (testOs !== os) {
                     expect(httpAgent).not.toMatch(userAgentRegex);
                 }
-            });
+            }
 
             await browser.close();
         },
